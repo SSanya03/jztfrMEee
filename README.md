@@ -1,53 +1,28 @@
-# FocusFlow — Smart Task & Productivity Manager
+# jztfrMEee 🌷
 
-FocusFlow is a responsive task management web application designed to help users organize daily activities, manage priorities, and track their productivity.
+*A new day, a little more me.*
+
+A personal space to plan, reflect, and become.
 
 ## Features
+- Create, edit, delete, and organize tasks.
+- Set priorities, categories, and due dates.
+- Track daily habits and consistency.
+- Record daily reflections and improvements.
+- Monitor progress with simple statistics.
+- Save data locally in your browser.
 
-- Add tasks with a title, notes, priority, category, and due date.
-- Track total, completed, pending, and overdue tasks.
-- Search and filter tasks.
-- Sort tasks by date, priority, or title.
-- Save tasks locally in the browser.
-- Responsive layout for desktop and mobile screens.
-
-## Technologies Used
-
-- HTML5
-- CSS3
+## Built With
+- HTML
+- CSS
 - JavaScript
 - Browser Local Storage
 
-## Getting Started
+## Run Locally
+1. Clone or download this repository.
+2. Open the project folder in VS Code.
+3. Open `index.html` using Live Server.
 
-1. Download or clone this repository.
-2. Open the project folder in Visual Studio Code.
-3. Open `index.html` using the Live Server extension.
-4. Add and manage tasks in your browser.
+## Project Status
+Under development.
 
-## Project Structure
-
-```text
-focusflow/
-├── index.html
-├── styles.css
-├── app.js
-├── README.md
-└── .gitignore
-```
-
-## Data Storage
-
-FocusFlow uses browser Local Storage to save tasks on the user's device. Data is stored locally rather than in a remote database.
-
-## Future Improvements
-
-- User authentication
-- Cloud synchronization
-- Task reminders and notifications
-- Productivity charts and reports
-- Automated tests
-
-## Status
-
-Under development. Features should be tested before considering the application complete.
