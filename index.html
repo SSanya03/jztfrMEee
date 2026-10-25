@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow | Smart Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div>
+      <h1>FocusFlow</h1>
+      <p>Your day, organized.</p>
+    </div>
+    <span class="status">● All changes saved locally</span>
+  </header>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <button type="button" class="nav-btn active" data-page="dashboardPage">Dashboard</button>
+    <button type="button" class="nav-btn" data-page="tasksPage">My Tasks</button>
+    <button type="button" class="nav-btn" data-page="consistencyPage">Consistency</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- DASHBOARD -->
+    <section id="dashboardPage" class="page active">
+      <section class="welcome">
+        <h2>Make today count.</h2>
+        <p>Plan your tasks, track your progress, and stay focused.</p>
+      </section>
+
+      <section class="stats">
+        <article class="stat">
+          <span>Total tasks</span>
+          <strong id="totalCount">0</strong>
+        </article>
+        <article class="stat">
+          <span>Completed</span>
+          <strong id="completedCount">0</strong>
+        </article>
+        <article class="stat">
+          <span>Pending</span>
+          <strong id="pendingCount">0</strong>
+        </article>
+        <article class="stat">
+          <span>Overdue</span>
+          <strong id="overdueCount">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Welcome to FocusFlow 🌷</h2>
+        <p>Organize your tasks and build better daily habits.</p>
+        <button type="button" data-go-page="tasksPage">Open My Tasks</button>
+      </section>
+    </section>
+
+    <!-- MY TASKS -->
+    <section id="tasksPage" class="page">
+      <section class="panel">
+        <h2>Add a task</h2>
+
+        <form id="taskForm">
+          <label for="taskTitle">Task title</label>
+          <input id="taskTitle" name="title"
+            placeholder="e.g. Finish internship project"
+            required maxlength="120">
+
+          <label for="taskNotes">Notes (optional)</label>
+          <input id="taskNotes" name="notes"
+            placeholder="Add a few details">
+
+          <div class="form-row">
+            <div>
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="taskCategory">Category</label>
+              <select id="taskCategory" name="category">
+                <option value="study">Study</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="taskDueDate">Due date</label>
+              <input id="taskDueDate" name="dueDate" type="date">
+            </div>
+          </div>
+
+          <button type="submit">+ Add task</button>
+          <p id="formMessage" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="task-heading">
+          <div>
+            <h2>Your tasks</h2>
+            <p>Manage your work in one place.</p>
+          </div>
+          <input id="searchInput" placeholder="Search tasks..."
+            aria-label="Search tasks">
+        </div>
+
+        <div class="filters">
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="all">All tasks</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <select id="priorityFilter" aria-label="Filter by priority">
+            <option value="all">All priorities</option>
+            <option value="high">High priority</option>
+            <option value="medium">Medium priority</option>
+            <option value="low">Low priority</option>
+          </select>
+
+          <select id="sortBy" aria-label="Sort tasks">
+            <option value="newest">Newest first</option>
+            <option value="dueDate">Due date</option>
+            <option value="priority">Priority</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+        <p id="emptyMessage" class="empty">No tasks match your filters.</p>
+      </section>
+    </section>
+
+    <!-- CONSISTENCY -->
+    <section id="consistencyPage" class="page">
+      <div id="consistencyMount"></div>
+    </section>
+
+  </main>
+
+  <footer>FocusFlow · A simple, local-first productivity app</footer>
+
+  <script src="app.js"></script>
+  <script src="consistency.js"></script>
+
+  <script>
+    document.querySelectorAll("[data-page], [data-go-page]").forEach(button => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.page || button.dataset.goPage;
+
+        document.querySelectorAll(".page").forEach(page => {
+          page.classList.toggle("active", page.id === target);
+        });
+
+        document.querySelectorAll(".nav-btn").forEach(navButton => {
+          navButton.classList.toggle(
+            "active",
+            navButton.dataset.page === target
+          );
+        });
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+
+</body>
+</html>
